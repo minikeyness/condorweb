@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+    登录
+{% endblock %}
+{% block extra_head %}
+    <script type="text/javascript">
+    $(function () {
+        {% if msg %}
+        myalert("{{ msg }}");
+        {% endif %}
+{#        $("[data-toggle='popover']").popover();#}
+    $("input[type=submit]").click(function(e){
+        if ($("#uname").val()==""||$("#upwd").val()=="")
+        {
+            e.preventDefault();
+            myalert("请输入用户名和密码!");
+        }
+    });
+    });
+    </script>
+    <style>
+    .logindiv{
+        width: 400px;
+        height: 300px;
+        border-radius: 10px;
+        background-color:#e1edf7;
+        opacity: 50;
+        margin: auto;
+        text-align: center;
+        vertical-align: middle;
+    }
+    </style>
+{% endblock %}
+
+{% block content%}
+    <form action="{{ url_for("myapp.loginin") }}" method="post" class="form-inline">
+    <div style="width: 100%;background-color: white;height: 400px;margin-top: 100px">
+        {% if error %}
+        <p style="color: red;text-align: center;width: 100%;display: block">{{ error }}</p>
+        {% endif %}
+        <table class="logindiv">
+            <tr>
+                <td>
+                    <label>用户名:</label> <input id="uname" name="uname" class="form-control" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>密码:</label> <input id="upwd" name="pwd" class="form-control" type="password">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>记住我:</label> <input id="remb" name="remember_me" class="form-control" type="checkbox">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="btn btn-default" type="button" onclick="location='#'" value="注册">
+                    <input class="btn btn-primary" type="submit" value="登录">
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+{% endblock %}

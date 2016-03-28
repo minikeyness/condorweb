@@ -1,0 +1,93 @@
+body{
+    width: 100%;
+    height: auto;
+    background-color: #cacaca;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+.mymain {
+    display: block;
+    width: 1024px;
+    height: auto;
+    margin: 0px auto;
+    background-color: white;
+    padding: 0px;
+    border: 0px;
+    overflow: hidden;
+}
+
+.mymenu{
+    width: 1024px;
+    height: 50px;
+    display: block;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    overflow: hidden;
+    border-bottom: 5px solid #478DCD;
+}
+
+ul.mynav{
+    width: 50%;
+    height: 45px;
+    display: inline-block;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    background-color: #478DCD;
+    border-radius:0px 45px 0px 0px;
+}
+
+ul.mynav li{
+    float: left;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+ul.mynav li a{
+    color: black;
+    display: block;
+    line-height: 40px;
+    background-color: #478DCD;
+    border-radius:5px;
+    text-align: center;
+}
+
+ul.mynav li a:hover{
+    background-color: #ffffff;
+}
+
+.userstatus{
+    display: inline-block;
+    width: 45%;
+    height:100%;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    text-align: right;
+    line-height: 50px;
+    overflow: hidden;
+}
+
+.mycontent{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.myfooter {
+    border-top:2px solid #478DCD ;
+    height: 100px;
+    width: 100%;
+    line-height: 10px;
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 5px;
+}
+a:hover{
+    text-decoration: none;
+}

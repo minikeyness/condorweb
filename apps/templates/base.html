@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.blockUI.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/ajaxtools.js') }}"></script>
+    {% block extra_head %}
+    {% endblock %}{#每个页面的自己js,css等#}
+</head>
+<body>
+<div class="mymain">
+    <div class="mymenu">{#所以页面同一个导航栏#}
+        <ul class="mynav">
+            <li><a id="l1" href="{{ url_for("myapp.home") }}">首页</a></li>
+            <li><a id="l2" href="#">管理</a></li>
+            <li><a id="l3" href="{{ url_for("myapp.about") }}">关于</a></li>
+        </ul>
+        <div class="userstatus">
+            {% if current_user and current_user.is_authenticated %}
+                <label>你好,</label>
+                <a href="#">{{ current_user.user_name }}</a>
+                <a style="color: black" href="{{ url_for("myapp.loginout") }}">退出</a>
+            {% else %}
+                <label>你好,请</label>
+                <a href="#">登录 | </a>
+                <a href="#">注册</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="mycontent">{#每个页面具体的内容#}
+    {% block content %}
+    {% endblock content %}
+    </div>
+    <div class="myfooter">{#页面的结尾#}
+        <p>欢迎,欢迎，欢迎</p>
+        <p>版权所有 计算研究院</p>
+        <p>京ICP备1111111111号</p>
+    </div>
+</div>
+</body>
+</html>

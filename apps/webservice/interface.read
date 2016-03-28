@@ -1,0 +1,184 @@
+Suds ( https://fedorahosted.org/suds/ )  version: 0.4.1 jurko 4
+
+Service ( condorCollector ) tns="urn:condor"
+   Prefixes (2)
+      ns0 = "http://schemas.xmlsoap.org/soap/encoding/"
+      ns1 = "urn:condor"
+   Ports (1):
+      (condorCollector)
+         Methods (10):
+            getPlatformString()
+            getVersionString()
+            insertAd(ClassAdType type, ClassAdStruct ad)
+            queryAnyAds(xs:string constraint)
+            queryLicenseAds(xs:string constraint)
+            queryMasterAds(xs:string constraint)
+            queryScheddAds(xs:string constraint)
+            queryStartdAds(xs:string constraint)
+            queryStorageAds(xs:string constraint)
+            querySubmittorAds(xs:string constraint)
+         Types (58):
+            ns0:Array
+            ClassAdAttrType
+            ClassAdStruct
+            ClassAdStructAndStatus
+            ClassAdStructArray
+            ClassAdStructArrayAndStatus
+            ClassAdStructAttr
+            ClassAdType
+            ns0:ENTITIES
+            ns0:ENTITY
+            ns0:ID
+            ns0:IDREF
+            ns0:IDREFS
+            ns0:NCName
+            ns0:NMTOKEN
+            ns0:NMTOKENS
+            ns0:NOTATION
+            ns0:Name
+            ns0:QName
+            Status
+            StatusCode
+            StringAndStatus
+            ns0:Struct
+            ns0:anyURI
+            ns0:arrayCoordinate
+            ns0:base64
+            ns0:base64Binary
+            ns0:boolean
+            ns0:byte
+            ns0:date
+            ns0:dateTime
+            ns0:decimal
+            ns0:double
+            ns0:duration
+            ns0:float
+            ns0:gDay
+            ns0:gMonth
+            ns0:gMonthDay
+            ns0:gYear
+            ns0:gYearMonth
+            ns0:hexBinary
+            ns0:int
+            ns0:integer
+            ns0:language
+            ns0:long
+            ns0:negativeInteger
+            ns0:nonNegativeInteger
+            ns0:nonPositiveInteger
+            ns0:normalizedString
+            ns0:positiveInteger
+            ns0:short
+            ns0:string
+            ns0:time
+            ns0:token
+            ns0:unsignedByte
+            ns0:unsignedInt
+            ns0:unsignedLong
+            ns0:unsignedShort
+
+
+
+
+Suds ( https://fedorahosted.org/suds/ )  version: 0.4.1 jurko 4
+
+Service ( condorSchedd ) tns="urn:condor"
+   Prefixes (2)
+      ns0 = "http://schemas.xmlsoap.org/soap/encoding/"
+      ns1 = "urn:condor"
+   Ports (1):
+      (condorSchedd)
+         Methods (23):
+            abortTransaction(Transaction transaction)
+            beginTransaction(xs:int duration)
+            closeSpool(Transaction transaction, xs:int clusterId, xs:int jobId)
+            commitTransaction(Transaction transaction)
+            createJobTemplate(xs:int clusterId, xs:int jobId, xs:string owner, UniverseType type, xs:string cmd, xs:string args, xs:string requirements)
+            declareFile(Transaction transaction, xs:int clusterId, xs:int jobId, xs:string name, xs:int size, HashType hashType, xs:string hash)
+            discoverJobRequirements(ClassAdStruct jobAd)
+            extendTransaction(Transaction transaction, xs:int duration)
+            getFile(Transaction transaction, xs:int clusterId, xs:int jobId, xs:string name, xs:int offset, xs:int length)
+            getJobAd(Transaction transaction, xs:int clusterId, xs:int jobId)
+            getJobAds(Transaction transaction, xs:string constraint)
+            getPlatformString()
+            getVersionString()
+            holdJob(Transaction transaction, xs:int clusterId, xs:int jobId, xs:string reason, xs:boolean email-user, xs:boolean email-admin, xs:boolean system-hold)
+            listSpool(Transaction transaction, xs:int clusterId, xs:int jobId)
+            newCluster(Transaction transaction)
+            newJob(Transaction transaction, xs:int clusterId)
+            releaseJob(Transaction transaction, xs:int clusterId, xs:int jobId, xs:string reason, xs:boolean email-user, xs:boolean email-admin)
+            removeCluster(Transaction transaction, xs:int clusterId, xs:string reason)
+            removeJob(Transaction transaction, xs:int clusterId, xs:int jobId, xs:string reason, xs:boolean force-removal)
+            requestReschedule()
+            sendFile(Transaction transaction, xs:int clusterId, xs:int jobId, xs:string name, xs:int offset, xs:base64Binary data)
+            submit(Transaction transaction, xs:int clusterId, xs:int jobId, ClassAdStruct jobAd)
+         Types (69):
+            ns0:Array
+            Base64DataAndStatus
+            ClassAdAttrType
+            ClassAdStruct
+            ClassAdStructAndStatus
+            ClassAdStructArray
+            ClassAdStructArrayAndStatus
+            ClassAdStructAttr
+            ns0:ENTITIES
+            ns0:ENTITY
+            FileInfo
+            FileInfoArray
+            FileInfoArrayAndStatus
+            HashType
+            ns0:ID
+            ns0:IDREF
+            ns0:IDREFS
+            IntAndStatus
+            ns0:NCName
+            ns0:NMTOKEN
+            ns0:NMTOKENS
+            ns0:NOTATION
+            ns0:Name
+            ns0:QName
+            Requirement
+            Requirements
+            RequirementsAndStatus
+            Status
+            StatusCode
+            StringAndStatus
+            ns0:Struct
+            Transaction
+            TransactionAndStatus
+            UniverseType
+            ns0:anyURI
+            ns0:arrayCoordinate
+            ns0:base64
+            ns0:base64Binary
+            ns0:boolean
+            ns0:byte
+            ns0:date
+            ns0:dateTime
+            ns0:decimal
+            ns0:double
+            ns0:duration
+            ns0:float
+            ns0:gDay
+            ns0:gMonth
+            ns0:gMonthDay
+            ns0:gYear
+            ns0:gYearMonth
+            ns0:hexBinary
+            ns0:int
+            ns0:integer
+            ns0:language
+            ns0:long
+            ns0:negativeInteger
+            ns0:nonNegativeInteger
+            ns0:nonPositiveInteger
+            ns0:normalizedString
+            ns0:positiveInteger
+            ns0:short
+            ns0:string
+            ns0:time
+            ns0:token
+            ns0:unsignedByte
+            ns0:unsignedInt
+            ns0:unsignedLong
+            ns0:unsignedShort
