@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}
+    作业管理
+{% endblock %}
+{% block extra_head %}
+    <script type="text/javascript">
+    $(function(){
+        $("#l1").css("background-color","#ffffff");
+    });
+    </script>
+    <style>
+    </style>
+{% endblock %}
+
+{% block content%}
+    <div style="margin:auto; padding: 0px; width: 100%;text-align: center;overflow:hidden">
+    <div class="leftnav">
+        <dl>
+            <dt>通知</dt>
+            <dd><a href="{{ url_for("jobsubmit.usermessage") }}">用户通知</a></dd>
+            <dt>作业提交</dt>
+            <dd><a href="{{ url_for("jobsubmit.simplesub") }}">简单作业</a></dd>
+            <dd class="selectnav"><a href="{{ url_for("jobsubmit.complexsub") }}">大作业</a></dd>
+            <dt>作业查询</dt>
+            <dd><a href="#">已完成</a></dd>
+            <dd><a href="#">正在进行</a></dd>
+        </dl>
+    </div>
+    <div class="rightcent">
+        <form action="{{ url_for("jobsubmit.complexsub") }}" method="post" class="form-inline">
+        <table class="table table-striped">
+            <caption style="text-align: center">大作业</caption>
+
+            <tbody>
+            <tr>
+                <td colspan="2">
+                    <p>批量文件上传..</p>
+                </td>
+            </tr>
+            <tr>
+                <td><label>执行：</label></td>
+                <td><input id="parastr" name="para_str" class="form-control" type="text"></td>
+            </tr>
+            <tr>
+                <td><label>参数：</label></td>
+                <td><input id="parastr" name="para_str" class="form-control" type="text"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input class="btn btn-default" id="bt_sub" type="button" value="提交">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </form>
+    </div>
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        提示
+                    </h4>
+                </div>
+                <div class="modal-body" id="mymodaltxt">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">关闭
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+{% endblock %}

@@ -1,22 +1,28 @@
-from flask import Flask, Blueprint
+from flask import Blueprint
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from apps.models import User
-from flask import render_template, flash, redirect, session, url_for, request, g
+from flask import render_template, redirect, url_for, request
 from apps.webservice import schedd, collector
 
 myapp = Blueprint('myapp', __name__)
 
 
-@myapp.route('/')
-@myapp.route('/home')
+@myapp.route('/', methods=["GET"])
+@myapp.route('/home', methods=["GET"])
 def home():
-    version=schedd.service.getVersionString()
+    version = schedd.service.getVersionString()
     return render_template('home.html', version=version)
 
 
-@myapp.route('/about')
+@myapp.route('/about', methods=["GET"])
 def about():
-    return '这是关于'
+    return render_template('about.html')
+
+
+@myapp.route('/registe', methods=["GET", "POST"])
+def register():
+    if request.method == 'GET':
+        return render_template('register.html')
 
 
 @myapp.route('/login', methods=["GET", "POST"])
@@ -26,7 +32,6 @@ def loginin():
     if request.method != 'POST':
         return render_template('login.html')
 
-    # session['remember_me'] = request.form.get('remember_me')
     uname = request.form["uname"]
     pwd = request.form["pwd"]
     # if request.form.getattribute("remember_me"):

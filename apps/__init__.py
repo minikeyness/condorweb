@@ -17,6 +17,7 @@ DEFAULT_APP_NAME = 'condorweb'
 
 DEFAULT_MODULES = (
     views.myapp,
+    views.jobsubmit,
 )
 
 

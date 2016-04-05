@@ -17,18 +17,28 @@
     <div class="mymenu">{#所以页面同一个导航栏#}
         <ul class="mynav">
             <li><a id="l1" href="{{ url_for("myapp.home") }}">首页</a></li>
-            <li><a id="l2" href="#">管理</a></li>
+            <li><a id="l2" href="{{ url_for("jobsubmit.usermessage") }}">管理</a></li>
             <li><a id="l3" href="{{ url_for("myapp.about") }}">关于</a></li>
         </ul>
         <div class="userstatus">
             {% if current_user and current_user.is_authenticated %}
                 <label>你好,</label>
-                <a href="#">{{ current_user.user_name }}</a>
-                <a style="color: black" href="{{ url_for("myapp.loginout") }}">退出</a>
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-user">{{ current_user.user_name }}</span>
+                </button>
+                <a class="btn btn-default btn-sm" href="{{url_for("myapp.loginout")}}">
+                    <span class="glyphicon glyphicon-log-out">
+                        退出
+                    </span>
+                </a>
             {% else %}
                 <label>你好,请</label>
-                <a href="#">登录 | </a>
-                <a href="#">注册</a>
+                <a class="btn btn-info btn-sm" href="{{ url_for("myapp.loginin") }}">
+                    <span class="glyphicon glyphicon-log-in">登录</span>
+                </a>
+                <a class="btn btn-default btn-sm" href="{{ url_for("myapp.register") }}">
+                    <span class="glyphicon glyphicon-edit">注册</span>
+                </a>
             {% endif %}
         </div>
     </div>
@@ -38,8 +48,7 @@
     </div>
     <div class="myfooter">{#页面的结尾#}
         <p>欢迎,欢迎，欢迎</p>
-        <p>版权所有 计算研究院</p>
-        <p>京ICP备1111111111号</p>
+        <p>condor-web</p>
     </div>
 </div>
 </body>

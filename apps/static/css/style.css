@@ -76,6 +76,7 @@ ul.mynav li a:hover{
 
 .mycontent{
     width: 100%;
+    min-height: 550px;
     margin-top: 10px;
 }
 
@@ -91,3 +92,50 @@ ul.mynav li a:hover{
 a:hover{
     text-decoration: none;
 }
+
+
+.leftnav{
+        display: inline-block;
+        width: 200px;
+        height: 300px;
+        border: 2px solid #1E81C4;
+        border-radius: 3px;
+        margin: 5px;
+        overflow: hidden;
+        vertical-align: top;
+    }
+    .leftnav dl{
+        display:block;
+        width: 200px;
+        text-align: center;
+    }
+    .leftnav dl dt{
+        display: block;
+        width:100%;
+        height: 40px;
+        line-height: 40px;
+        text-align: left;
+        background-color:#5bc0de;
+    }
+    .leftnav dl dd{
+        height: 30px;
+        margin-bottom: 5px;
+        line-height: 30px;
+    }
+    .leftnav dl dd:hover{
+         background-color: #a6e1ec;
+    }
+    .selectnav{
+        background-color: #a6e1ec;
+    }
+
+    .rightcent{
+        width: 800px;
+        min-height:550px;
+        display: inline-block;
+        border: 2px solid #1E81C4;
+        border-radius: 3px;
+        margin: 5px;
+        overflow: hidden;
+        text-align: center;
+    }
