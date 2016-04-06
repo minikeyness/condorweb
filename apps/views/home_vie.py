@@ -34,11 +34,12 @@ def loginin():
 
     uname = request.form["uname"]
     pwd = request.form["pwd"]
-    # if request.form.getattribute("remember_me"):
-    #     session['remember_me'] = request.form['remember_me']
+    rem = False
+    if hasattr(request.form, "remember_me"):
+        rem = True
 
     us = User.query.filter_by(user_name=uname).first()
-    if us.check_pwd(pwd) and login_user(us):
+    if us.check_pwd(pwd) and login_user(us, remember=rem):
         return redirect(url_for('myapp.home'))
     else:
         error = "登录名或密码错误"
