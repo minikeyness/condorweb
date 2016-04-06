@@ -18,13 +18,13 @@
     <div class="leftnav">
         <dl>
             <dt>通知</dt>
-            <dd class="selectnav"><a href="{{ url_for("jobsubmit.usermessage") }}">用户通知</a></dd>
+            <dd class="selectnav"><a href="{{ url_for('jobsubmit.usermessage') }}">用户通知</a></dd>
             <dt>作业提交</dt>
-            <dd><a href="{{ url_for("jobsubmit.simplesub") }}">简单作业</a></dd>
-            <dd><a href="{{ url_for("jobsubmit.complexsub") }}">大作业</a></dd>
+            <dd><a href="{{ url_for('jobsubmit.simplesub') }}">简单作业</a></dd>
+            <dd><a href="{{ url_for('jobsubmit.complexsub') }}">大作业</a></dd>
             <dt>作业查询</dt>
             <dd><a href="#">已完成</a></dd>
-            <dd><a href="#">正在进行</a></dd>
+            <dd><a href="{{ url_for('search.home')}}">正在进行</a></dd>
         </dl>
     </div>
     <div class="rightcent">

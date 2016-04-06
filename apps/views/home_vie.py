@@ -1,5 +1,5 @@
 from flask import Blueprint
-from flask.ext.login import login_user, logout_user, current_user, login_required
+from flask_login import login_user, logout_user, current_user, login_required
 from apps.models import User
 from flask import render_template, redirect, url_for, request
 from apps.webservice import schedd, collector
