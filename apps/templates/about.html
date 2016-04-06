@@ -1,22 +1,19 @@
 {% extends "base.html" %}
 {% block title %}
-    首页
+    关于
 {% endblock %}
 {% block extra_head %}
     <script type="text/javascript">
     $(function(){
-        $("#l1").css("background-color","#ffffff");
+        $("#l3").css("background-color","#ffffff");
     });
     </script>
     <style>
-
     </style>
 {% endblock %}
 
 {% block content%}
-    <div style="margin:auto; padding: 0px; width: 100%;text-align: center;overflow:hidden">
-        <p>
-        codnor version:{{ version.message }}
-        </p>
+    <div>
+    <h4>Something about...</h4>
     </div>
 {% endblock %}

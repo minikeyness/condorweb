@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}
+    作业管理
+{% endblock %}
+{% block extra_head %}
+    <script type="text/javascript">
+    $(function(){
+    $("#bt_sub").click(function(e){
+        val1=$("#cmdstr").val();
+        if (val1=="")
+        {
+            $("#mymodaltxt").text("请填写命令！")
+            $("#myModal").modal("show")
+            e.preventDefault()
+        }
+    })
+
+        $("#l1").css("background-color","#ffffff");
+        {% if errors %}
+            $("#mymodaltxt").text(errors)
+            $("#mymodaltxt").css("color:red")
+            $("#myModal").modal("show")
+        {% endif %}
+        {% if succ %}
+            $("#mymodaltxt").text(succ)
+            $("#mymodaltxt").css("color:black")
+            $("#myModal").modal("show")
+        {% endif %}
+    });
+    </script>
+    <style>
+    </style>
+{% endblock %}
+
+{% block content%}
+    <div style="margin:auto; padding: 0px; width: 100%;text-align: center;overflow:hidden">
+    <div class="leftnav">
+        <dl>
+            <dt>通知</dt>
+            <dd><a href="{{ url_for("jobsubmit.usermessage") }}">用户通知</a></dd>
+            <dt>作业提交</dt>
+            <dd  class="selectnav"><a href="{{ url_for("jobsubmit.simplesub") }}">简单作业</a></dd>
+            <dd><a href="{{ url_for("jobsubmit.complexsub") }}">大作业</a></dd>
+            <dt>作业查询</dt>
+            <dd><a href="#">已完成</a></dd>
+            <dd><a href="#">正在进行</a></dd>
+        </dl>
+    </div>
+    <div class="rightcent">
+        <form action="{{ url_for("jobsubmit.simplesub") }}" method="post" class="form-inline">
+        <table class="table table-striped">
+            <caption style="text-align: center">简单命令作业</caption>
+            <thead>
+            <tr>
+                <th>绝对路径命令:</th>
+                <th>参数:</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input id="cmdstr" name="cmd_str" class="form-control" type="text"></td>
+                <td><input id="parastr" name="para_str" class="form-control" type="text"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input class="btn btn-default" id="bt_sub" type="submit" value="提交">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </form>
+    </div>
+    </div>
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        提示
+                    </h4>
+                </div>
+                <div class="modal-body" id="mymodaltxt">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">关闭
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+{% endblock %}
