@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}
+    首页
+{% endblock %}
+
+{% block extra_head %}
+    <script type="text/javascript">
+    $(function(){
+        $("#l1").css("background-color","#ffffff");
+    });
+    </script>
+    <style>
+
+    </style>
+{% endblock %}
+
+{% block content%}
+    <table class="table">
+        <caption>作业列表</caption>
+        <thead>
+            <tr>
+                <th>ClusterId</th>
+                <th>Status</th>
+                <th>Progress</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {%for job in job_info%}
+            <tr>
+                <td>{{job['ClusterId']}}</td>
+                <td>{{job['JobStatus']}}</td>
+                <td>
+                    <div class="progress">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60"
+                        aria-valuemin="0" aria-valuemax="100" style="width: {{job['progress']}};">
+                        <span class="sr-only">40% 完成</span>
+                    </div></div>
+                </td>
+            </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}
+
