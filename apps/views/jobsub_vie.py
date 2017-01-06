@@ -1,7 +1,12 @@
+#-*- coding: UTF-8 -*-
+import sys
 from flask import Flask, Blueprint
 from flask import render_template, flash, redirect, session, url_for, request, g, jsonify
 from apps.webservice import schedd, status_enum, universe_enum, hash_enum
 import base64, os, re
+
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 jobsubmit = Blueprint('jobsubmit', __name__)
 
@@ -49,16 +54,16 @@ def simplesub():
 def complexsub():
     if request.method == 'GET':
         return render_template('jobcomplex.html')
-    u_name = "whz" # current_user.user_name
+    u_name = "whz"  # current_user.user_name
     updir = os.path.join("upload", u_name)
     execp = request.form["exec_str"]
     parp = request.form["para_str"]
     files = []
     for etf in request.form:
-        if re.match(r"^SWFUpload_\d+_\d+$", etf): # 隐藏域中的文件名称，已经上传的
+        if re.match(r"^SWFUpload_\d+_\d+$", etf):  # 隐藏域中的文件名称，已经上传的
             files.append(request.form[etf])
 
-    tran_status = schedd.service.beginTransaction(30)
+    tran_status = schedd.service.beginTransaction(300)
     if tran_status.status.code != status_enum.SUCCESS:
         error = "无法创建服务，提交失败！"
         schedd.service.abortTransaction(tran_status.transaction)
@@ -68,19 +73,24 @@ def complexsub():
     job_id = schedd.service.newJob(tran_status.transaction, clu_id.integer)
 
     for af in files:
-        bta41 = open(os.path.join(updir, af), mode="rb") # 作业文件
+        bta41 = open(os.path.join(updir, af), mode="rb")  # 作业文件
         bta42 = base64.b64encode(bta41.read())
-        len_b = os.path.getsize(af)
+        filepath = os.path.join(updir, af)
+        len_b = os.path.getsize(filepath)
+        print(filepath + str(len_b))
         sta1 = schedd.service.declareFile(tran_status.transaction, clu_id.integer, job_id.integer, af, len_b, hash_enum.NOHASH, None)
+        print("sta1 is " + str(sta1))
         sta2 = schedd.service.sendFile(tran_status.transaction, clu_id.integer, job_id.integer, af, 0, bta42)
+        print("sta2 is " + str(sta2))
 
-    requiretment = "Userlog = mpi.log;Output= mpi.out.;Err= mpi.errors;machine_count= 4;" \
+    requiretment = "Userlog = mpi.log;Output= mpi.out;Err= mpi.errors;machine_count= 1;" \
         "should_transfer_files= Yes;transfer_input_files= bta4;when_to_transfer_output = ON_EXIT"
 
     class_ad = schedd.service.createJobTemplate(clu_id.integer, job_id.integer, "condor",
-                                  universe_enum.PARALLEL, execp, parp, requiretment)
+                                  universe_enum.VANILLA, execp, parp, requiretment)
 
     schedd.service.submit(tran_status.transaction, clu_id.integer, job_id.integer, class_ad.classAd)
+
     schedd.service.commitTransaction(tran_status.transaction)
 
     error = "作业提交成功！"

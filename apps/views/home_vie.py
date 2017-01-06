@@ -1,3 +1,4 @@
+#-*- coding: UTF-8 -*-
 from flask import Blueprint
 from flask_login import login_user, logout_user, current_user, login_required
 from apps.models import User
@@ -11,7 +12,7 @@ myapp = Blueprint('myapp', __name__)
 @myapp.route('/home', methods=["GET"])
 def home():
     version = schedd.service.getVersionString()
-    return render_template('home.html', version=version)
+    return render_template('home.html')
 
 
 @myapp.route('/about', methods=["GET"])

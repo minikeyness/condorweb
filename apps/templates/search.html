@@ -34,9 +34,10 @@
         <caption>作业列表</caption>
         <thead>
             <tr>
-                <th>ClusterId</th>
-                <th>Status</th>
+                <th>作业Id</th>
+                <th>作业状态</th>
                 <th>Progress</th>
+                <th>输出文件</th>
             </tr>
         </thead>
 
@@ -52,6 +53,7 @@
                         <span class="sr-only">40% 完成</span>
                     </div></div>
                 </td>
+                <td><a href="#">{{job['JobOut']}}</a></td>
             </tr>
         {%endfor%}
         </tbody>

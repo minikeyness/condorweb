@@ -1,6 +1,6 @@
 from werkzeug.security import check_password_hash
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.cache import Cache
+from flask_sqlalchemy import SQLAlchemy
+from flask_cache import Cache
 
 db = SQLAlchemy()
 cache = Cache()
